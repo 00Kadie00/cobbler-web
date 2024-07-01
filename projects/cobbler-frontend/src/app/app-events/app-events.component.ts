@@ -1,13 +1,42 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {MatTableDataSource} from '@angular/material/table';
+import {CobblerApiService, Event} from 'cobbler-api';
+import {DialogBoxTextConfirmComponent} from "../common/dialog-box-text-confirm/dialog-box-text-confirm";
 
 @Component({
   selector: 'cobbler-app-events',
   templateUrl: './app-events.component.html',
   styleUrls: ['./app-events.component.css']
 })
-export class AppEventsComponent {
+export class AppEventsComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'state', 'statetime', 'readByWho', 'actions'];
+  cobblerEvents = new MatTableDataSource<Event>([]);
 
-  constructor() {
+  constructor(
+    @Inject(MatDialog) readonly dialog: MatDialog,
+    private cobblerApiService: CobblerApiService,
+  ) {
   }
 
+  ngOnInit(): void {
+    this.cobblerApiService.get_events("").subscribe((value: Array<Event>) => {
+      this.cobblerEvents.data = value
+      console.log(value)
+    })
+  }
+
+  showLogs(eventId: string, name: string) {
+    this.cobblerApiService.get_event_log(eventId).subscribe((value: string) => {
+      const dialogRef = this.dialog.open(DialogBoxTextConfirmComponent, {
+        data: {
+          eventId: eventId,
+          name: name,
+          eventLog: value
+        }
+      });
+
+      dialogRef.afterClosed().subscribe();
+    })
+  }
 }

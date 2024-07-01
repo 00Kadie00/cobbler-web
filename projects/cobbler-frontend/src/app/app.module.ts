@@ -3,6 +3,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -48,6 +50,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatListModule} from '@angular/material/list';
+import { DialogBoxTextConfirmComponent } from './common/dialog-box-text-confirm/dialog-box-text-confirm';
 import { EditableTreeComponent } from './common/editable-tree/editable-tree.component';
 import { ViewableTreeComponent } from './common/viewable-tree/viewable-tree.component';
 import { SettingsEditComponent } from './settings/edit/settings-edit.component';
@@ -83,36 +86,39 @@ import { SettingsEditComponent } from './settings/edit/settings-edit.component';
     NotFoundComponent,
     ManageMenuComponent,
     NavbarComponent,
+    DialogBoxTextConfirmComponent,
     EditableTreeComponent,
     ViewableTreeComponent,
     SettingsEditComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatSidenavModule,
-    FlexModule,
-    ExtendedModule,
-    LayoutModule,
-    MatListModule,
-    MatTableModule,
-    MatTabsModule,
-    MatSnackBarModule,
-    MatRadioModule,
-    MatTreeModule,
-    MatTooltipModule,
-    MatSlideToggleModule,
-    MatPaginatorModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatToolbarModule,
+        MatDialogModule,
+        MatIconModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatSidenavModule,
+        FlexModule,
+        ExtendedModule,
+        LayoutModule,
+        MatListModule,
+        MatTableModule,
+        MatTabsModule,
+        MatSnackBarModule,
+        MatRadioModule,
+        MatTreeModule,
+        MatTooltipModule,
+        MatSlideToggleModule,
+        MatPaginatorModule,
+        MatMenuModule,
+    ],
   providers: [
     {
       provide: COBBLER_URL,
